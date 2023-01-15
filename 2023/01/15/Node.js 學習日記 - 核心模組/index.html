@@ -20,20 +20,20 @@
     var CONFIG = {"hostname":"yenkg9550.github.io","root":"/hexo-blog/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="require，module exports、exports 差異">
+  <meta name="description" content="Node.js 學習日記 - 核心模組">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Node.js 學習日記 - module exports 模組設計">
-<meta property="og:url" content="https://yenkg9550.github.io/hexo-blog/2023/01/15/Node.js%20%E5%AD%B8%E7%BF%92%E6%97%A5%E8%A8%98%20-%20module%20exports%20%E6%A8%A1%E7%B5%84%E8%A8%AD%E8%A8%88/index.html">
+<meta property="og:title" content="Node.js 學習日記 - 核心模組">
+<meta property="og:url" content="https://yenkg9550.github.io/hexo-blog/2023/01/15/Node.js%20%E5%AD%B8%E7%BF%92%E6%97%A5%E8%A8%98%20-%20%E6%A0%B8%E5%BF%83%E6%A8%A1%E7%B5%84/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="require，module exports、exports 差異">
+<meta property="og:description" content="Node.js 學習日記 - 核心模組">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-01-15T07:37:57.000Z">
-<meta property="article:modified_time" content="2023-01-15T08:16:23.133Z">
+<meta property="article:modified_time" content="2023-01-15T11:41:24.730Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Node.js">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://yenkg9550.github.io/hexo-blog/2023/01/15/Node.js%20%E5%AD%B8%E7%BF%92%E6%97%A5%E8%A8%98%20-%20module%20exports%20%E6%A8%A1%E7%B5%84%E8%A8%AD%E8%A8%88/">
+<link rel="canonical" href="https://yenkg9550.github.io/hexo-blog/2023/01/15/Node.js%20%E5%AD%B8%E7%BF%92%E6%97%A5%E8%A8%98%20-%20%E6%A0%B8%E5%BF%83%E6%A8%A1%E7%B5%84/">
 
 
 <script id="page-configurations">
@@ -46,7 +46,7 @@
   };
 </script>
 
-  <title>Node.js 學習日記 - module exports 模組設計 | Hexo</title>
+  <title>Node.js 學習日記 - 核心模組 | Hexo</title>
   
 
 
@@ -151,7 +151,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://yenkg9550.github.io/hexo-blog/2023/01/15/Node.js%20%E5%AD%B8%E7%BF%92%E6%97%A5%E8%A8%98%20-%20module%20exports%20%E6%A8%A1%E7%B5%84%E8%A8%AD%E8%A8%88/">
+    <link itemprop="mainEntityOfPage" href="https://yenkg9550.github.io/hexo-blog/2023/01/15/Node.js%20%E5%AD%B8%E7%BF%92%E6%97%A5%E8%A8%98%20-%20%E6%A0%B8%E5%BF%83%E6%A8%A1%E7%B5%84/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/hexo-blog/images/avatar.gif">
@@ -164,7 +164,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Node.js 學習日記 - module exports 模組設計
+          Node.js 學習日記 - 核心模組
         </h1>
 
         <div class="post-meta">
@@ -175,7 +175,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2023-01-15 15:37:57 / Modified: 16:16:23" itemprop="dateCreated datePublished" datetime="2023-01-15T15:37:57+08:00">2023-01-15</time>
+              <time title="Created: 2023-01-15 15:37:57 / Modified: 19:41:24" itemprop="dateCreated datePublished" datetime="2023-01-15T15:37:57+08:00">2023-01-15</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -198,24 +198,26 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>require，module exports、exports 差異</p>
+        <p>Node.js 學習日記 - 核心模組</p>
 <span id="more"></span>
 
-<h3 id="require、module-exports"><a href="#require、module-exports" class="headerlink" title="require、module exports"></a>require、module exports</h3><p>程式碼片段：</p>
+<h3 id="require、module-exports-模組"><a href="#require、module-exports-模組" class="headerlink" title="require、module exports 模組"></a>require、module exports 模組</h3><p>程式碼片段：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// app.js</span><br><span class="line">var content = require(&#x27;./data) // require 是用來載入 data.js 的</span><br><span class="line">console.log(content)</span><br><span class="line"></span><br><span class="line">// data.js</span><br><span class="line">var data = 123</span><br></pre></td></tr></table></figure>
 
 <p>這時會發現 console.log 出來的結果會是一個空物件 {}，而不是 123<br>原因是必須要使用 module.exports &#x3D; data 來導出</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//app.js</span><br><span class="line">var content = require(&#x27;./data)</span><br><span class="line">console.log(content)</span><br><span class="line"></span><br><span class="line">// data.js</span><br><span class="line">var data = 123</span><br><span class="line">module.exports = data // 必須加上這一段來 exports 出去</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//app.js</span></span><br><span class="line"><span class="keyword">var</span> content = <span class="built_in">require</span>(<span class="string">&#x27;./data)</span></span><br><span class="line"><span class="string">console.log(content)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">// data.js</span></span><br><span class="line"><span class="string">var data = 123</span></span><br><span class="line"><span class="string">module.exports = data // 必須加上這一段來 exports 出去</span></span><br></pre></td></tr></table></figure>
 <p>這時候就會印出正確的答案 123</p>
 <hr>
-<h3 id="exports"><a href="#exports" class="headerlink" title="exports"></a>exports</h3><p>接著是使用 exports 的方式：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// app.js</span><br><span class="line">var content = require(&#x27;./data)</span><br><span class="line">console.log(content)</span><br><span class="line"></span><br><span class="line">// data.js</span><br><span class="line">exports.data = 123 // 這裡直接導出 exports</span><br></pre></td></tr></table></figure>
+<h3 id="exports-模組"><a href="#exports-模組" class="headerlink" title="exports 模組"></a>exports 模組</h3><p>接著是使用 exports 的方式：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app.js</span></span><br><span class="line"><span class="keyword">var</span> content = <span class="built_in">require</span>(<span class="string">&#x27;./data)</span></span><br><span class="line"><span class="string">console.log(content)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">// data.js</span></span><br><span class="line"><span class="string">exports.data = 123 // 這裡直接導出 exports</span></span><br></pre></td></tr></table></figure>
 <p>印出來的結果一樣是 123</p>
 <p>另外也可以寫成 function 的形式，例如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// app.js</span><br><span class="line">var content = require(&#x27;./data)</span><br><span class="line">console.log(content.bark())</span><br><span class="line"></span><br><span class="line">// data.js</span><br><span class="line">exports.bark = function()&#123;</span><br><span class="line">  return &quot;bark!!&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 印出來為 &quot;bark!!&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app.js</span></span><br><span class="line"><span class="keyword">var</span> content = <span class="built_in">require</span>(<span class="string">&#x27;./data)</span></span><br><span class="line"><span class="string">console.log(content.bark())</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">// data.js</span></span><br><span class="line"><span class="string">exports.bark = function()&#123;</span></span><br><span class="line"><span class="string">  return &quot;bark!!&quot;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">// 印出來為 &quot;bark!!&quot;</span></span><br></pre></td></tr></table></figure>
 
 <p><font color=#FF0000>另外要特別注意 module exports 與 exports 是不能一起用的唷！！</font></p>
-
+<hr>
+<h3 id="createServer"><a href="#createServer" class="headerlink" title="createServer"></a>createServer</h3><p>若要使用 createServer 可以參考以下程式碼：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">&#x27;http&#x27;</span>); <span class="comment">// 載入原生 http 模組</span></span><br><span class="line">http.<span class="title function_">createServer</span>(<span class="keyword">function</span>(<span class="params">req, res</span>) &#123; <span class="comment">// 建立 server 在此處理 戶端向 http server 發送過來的 req</span></span><br><span class="line">  res.<span class="title function_">writeHead</span>(<span class="number">200</span>, &#123;<span class="string">&quot;Content-Type&quot;</span>: <span class="string">&quot;text/plain&quot;</span>&#125;); <span class="comment">// 若為成功 200，格式為 text/plain</span></span><br><span class="line">  res.<span class="title function_">write</span>(<span class="string">&quot;Hello !!&quot;</span>); <span class="comment">// 寫入 &quot;Hello !!&quot;</span></span><br><span class="line">  res.<span class="title function_">end</span>(); <span class="comment">// 結束</span></span><br><span class="line">&#125;).<span class="title function_">listen</span>(<span class="number">8080</span>); <span class="comment">// 進入此網站的監聽 port</span></span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -295,7 +297,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#require%E3%80%81module-exports"><span class="nav-number">1.</span> <span class="nav-text">require、module exports</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#exports"><span class="nav-number">2.</span> <span class="nav-text">exports</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#require%E3%80%81module-exports-%E6%A8%A1%E7%B5%84"><span class="nav-number">1.</span> <span class="nav-text">require、module exports 模組</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#exports-%E6%A8%A1%E7%B5%84"><span class="nav-number">2.</span> <span class="nav-text">exports 模組</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#createServer"><span class="nav-number">3.</span> <span class="nav-text">createServer</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
