@@ -28,7 +28,7 @@
 <meta property="og:description" content="Node.js 學習日記 - 核心模組">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-01-15T07:37:57.000Z">
-<meta property="article:modified_time" content="2023-01-15T12:41:04.257Z">
+<meta property="article:modified_time" content="2023-01-15T12:57:30.887Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Node.js">
 <meta name="twitter:card" content="summary">
@@ -175,7 +175,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2023-01-15 15:37:57 / Modified: 20:41:04" itemprop="dateCreated datePublished" datetime="2023-01-15T15:37:57+08:00">2023-01-15</time>
+              <time title="Created: 2023-01-15 15:37:57 / Modified: 20:57:30" itemprop="dateCreated datePublished" datetime="2023-01-15T15:37:57+08:00">2023-01-15</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -217,7 +217,7 @@
 
 <p><font color=#FF0000>另外要特別注意 module exports 與 exports 是不能一起用的唷！！</font></p>
 <hr>
-<h3 id="createServer"><a href="#createServer" class="headerlink" title="createServer"></a>createServer</h3><p>若要使用 createServer 可以參考以下程式碼：</p>
+<h3 id="createServer-模組"><a href="#createServer-模組" class="headerlink" title="createServer 模組"></a>createServer 模組</h3><p>若要使用 createServer 可以參考以下程式碼：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">&#x27;http&#x27;</span>); <span class="comment">// 載入原生 http 模組</span></span><br><span class="line">http.<span class="title function_">createServer</span>(<span class="keyword">function</span>(<span class="params">req, res</span>) &#123; <span class="comment">// 建立 server 在此處理 戶端向 http server 發送過來的 req</span></span><br><span class="line">  res.<span class="title function_">writeHead</span>(<span class="number">200</span>, &#123;<span class="string">&quot;Content-Type&quot;</span>: <span class="string">&quot;text/plain&quot;</span>&#125;); <span class="comment">// 若為成功 200，格式為 text/plain</span></span><br><span class="line">  res.<span class="title function_">write</span>(<span class="string">&quot;Hello !!&quot;</span>); <span class="comment">// 寫入 &quot;Hello !!&quot;</span></span><br><span class="line">  res.<span class="title function_">end</span>(); <span class="comment">// 結束</span></span><br><span class="line">&#125;).<span class="title function_">listen</span>(<span class="number">8080</span>); <span class="comment">// 進入此網站的監聽 port</span></span><br></pre></td></tr></table></figure>
     </div>
 
@@ -298,7 +298,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#require%E3%80%81module-exports-%E6%A8%A1%E7%B5%84"><span class="nav-number">1.</span> <span class="nav-text">require、module exports 模組</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#exports-%E6%A8%A1%E7%B5%84"><span class="nav-number">2.</span> <span class="nav-text">exports 模組</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#createServer"><span class="nav-number">3.</span> <span class="nav-text">createServer</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#require%E3%80%81module-exports-%E6%A8%A1%E7%B5%84"><span class="nav-number">1.</span> <span class="nav-text">require、module exports 模組</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#exports-%E6%A8%A1%E7%B5%84"><span class="nav-number">2.</span> <span class="nav-text">exports 模組</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#createServer-%E6%A8%A1%E7%B5%84"><span class="nav-number">3.</span> <span class="nav-text">createServer 模組</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
