@@ -191,3 +191,83 @@ correctTestAndcheckReward("小明")
 .then(name => console.log(`名字是 ${name}`)) // 接收 checkReward resolve 
 .catch(error => console.log(error))
 ```
+
+******
+
+### promise catch 多條件設計
+```js
+function correctTestAndcheckReward(name) {
+  return new Promise((resovle, reject) => {
+    console.log("批改作業中");
+    setTimeout(() => {
+      const score = Math.round(Math.random() * 100);
+      if (score >= 20) {
+        resovle({
+          name,
+          score
+        })
+      } else {
+        reject("您已達退學門檻")
+      }
+    }, 2000)
+  })
+}
+function checkReward(data) {
+  return new Promise((resolve, reject) => {
+    console.log("正在檢查獎品中");
+    setTimeout(() => {
+      if(data.score >= 90) {
+        resolve(`${data.name}獲得電影票`)
+      } else if (data.score >= 60 && data.score < 90) {
+        resolve(`${data.name}獲得嘉獎`)
+      } else {
+        reject(`您無獎品`); // 這邊加入 reject
+      }
+    }, 1000)
+  })
+}
+correctTestAndcheckReward("小明")
+.then(data => checkReward(data))
+.then(name => console.log(`名字是 ${name}`))
+.catch(error => console.log(error))
+```
+******
+
+ ### async、await 再升級
+ 
+ ```js
+ const init = async function(){
+  try {
+    const studentA = await correctTestAndcheckReward("小明");
+    // 過一秒後才執行下段語法
+    const rewardA = await checkReward(studentA);
+    console.log(rewardA)
+  } catch(error) {
+    console.log(error)
+  }
+}
+init()
+```
+
+******
+
+### promise.all 語法教學
+```js
+function correctTestAndcheckReward(name) {
+  return new Promise((resovle, reject) => {
+    console.log("批改作業中");
+    setTimeout(() => {
+      const score = Math.round(Math.random() * 100);
+        resovle({
+          name,
+          score
+        })
+    }, Math.random() * 10000)
+  })
+}
+
+Promise.all([correctTestAndcheckReward('小明'), correctTestAndcheckReward('小花'), correctTestAndcheckReward('小王')])
+.then(data => {
+  console.log(data)
+})
+```
