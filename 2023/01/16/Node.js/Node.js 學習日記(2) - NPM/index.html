@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/hexo-blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/hexo-blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/hexo-blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/hexo-blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/hexo-blog/css/main.css">
+
+
+<link rel="stylesheet" href="/hexo-blog/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yenkg9550.github.io","root":"/hexo-blog/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Node.js 學習日記 - NPM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Node.js 學習日記(2) - NPM">
+<meta property="og:url" content="https://yenkg9550.github.io/hexo-blog/2023/01/16/Node.js/Node.js%20%E5%AD%B8%E7%BF%92%E6%97%A5%E8%A8%98(2)%20-%20NPM/index.html">
+<meta property="og:site_name" content="焦糖&#39;s blog">
+<meta property="og:description" content="Node.js 學習日記 - NPM">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://yenkg9550.github.io/hexo-blog/images/Node01.png">
+<meta property="article:published_time" content="2023-01-16T03:03:20.000Z">
+<meta property="article:modified_time" content="2023-11-23T06:39:58.675Z">
+<meta property="article:author" content="焦糖">
+<meta property="article:tag" content="Node.js">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yenkg9550.github.io/hexo-blog/images/Node01.png">
+
+<link rel="canonical" href="https://yenkg9550.github.io/hexo-blog/2023/01/16/Node.js/Node.js%20%E5%AD%B8%E7%BF%92%E6%97%A5%E8%A8%98(2)%20-%20NPM/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>Node.js 學習日記(2) - NPM | 焦糖's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/hexo-blog/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">焦糖's blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/hexo-blog/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/hexo-blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/hexo-blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://yenkg9550.github.io/hexo-blog/2023/01/16/Node.js/Node.js%20%E5%AD%B8%E7%BF%92%E6%97%A5%E8%A8%98(2)%20-%20NPM/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/hexo-blog/images/avatar.gif">
+      <meta itemprop="name" content="焦糖">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="焦糖's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Node.js 學習日記(2) - NPM
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2023-01-16 11:03:20" itemprop="dateCreated datePublished" datetime="2023-01-16T11:03:20+08:00">2023-01-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2023-11-23 14:39:58" itemprop="dateModified" datetime="2023-11-23T14:39:58+08:00">2023-11-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/hexo-blog/categories/Node-js/" itemprop="url" rel="index"><span itemprop="name">Node.js</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>Node.js 學習日記 - NPM</p>
+<span id="more"></span>
+
+<h3 id="建立-package-json"><a href="#建立-package-json" class="headerlink" title="建立 package.json"></a>建立 package.json</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init 建立檔案</span><br></pre></td></tr></table></figure>
+
+<p>接著會詢問以下問題：</p>
+<ul>
+<li>package name: Project 要叫什麼名字</li>
+<li>version: Project 現在該是第幾版</li>
+<li>description: Project 基本介紹</li>
+<li>entry point: 進入點，Project 應該要執行哪個檔案</li>
+<li>author: 作者(自己)</li>
+<li>license: Project 是採用什麼授權的</li>
+<li>test command: 這個不太重要</li>
+</ul>
+<p>產生出來的 package.json 會長這樣</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;name&quot;</span>: <span class="string">&quot;node&quot;</span>,</span><br><span class="line">  <span class="string">&quot;version&quot;</span>: <span class="string">&quot;1.0.0&quot;</span>,</span><br><span class="line">  <span class="string">&quot;description&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">  <span class="string">&quot;main&quot;</span>: <span class="string">&quot;app.js&quot;</span>,</span><br><span class="line">  <span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;test&quot;</span>: <span class="string">&quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;author&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">  <span class="string">&quot;license&quot;</span>: <span class="string">&quot;ISC&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="NPM-安裝套件流程"><a href="#NPM-安裝套件流程" class="headerlink" title="NPM 安裝套件流程"></a>NPM 安裝套件流程</h3><p>可以先到 NPM <a target="_blank" rel="noopener" href="https://www.npmjs.com/">官方網站</a>，在紅框處可以直接收尋套件名稱</p>
+<p><img src="/hexo-blog/images/Node01.png"></p>
+<p>一樣先 npm init 建立 package.json，然後安裝 npm install express</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;name&quot;</span>: <span class="string">&quot;node&quot;</span>,</span><br><span class="line">  <span class="string">&quot;version&quot;</span>: <span class="string">&quot;1.0.0&quot;</span>,</span><br><span class="line">  <span class="string">&quot;description&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">  <span class="string">&quot;main&quot;</span>: <span class="string">&quot;app.js&quot;</span>,</span><br><span class="line">  <span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;test&quot;</span>: <span class="string">&quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;author&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">  <span class="string">&quot;license&quot;</span>: <span class="string">&quot;ISC&quot;</span>,</span><br><span class="line">  <span class="string">&quot;dependencies&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;express&quot;</span>: <span class="string">&quot;^4.18.2&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>完成的話在 package.json 就會看到 express 了</p>
+<p>最後在 app.js 進行 require</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var express = require(&#x27;express&#x27;)</span><br><span class="line">console.log(express)</span><br></pre></td></tr></table></figure>
+<p>若執行出來有各式指令語法，代表成功了</p>
+<hr>
+<h3 id="本版號說明"><a href="#本版號說明" class="headerlink" title="本版號說明"></a>本版號說明</h3><p>例如：jQuery v1.12.0</p>
+<ul>
+<li><p>1: 主要版本號</p>
+</li>
+<li><p>12: 次要版本號</p>
+</li>
+<li><p>0: bug 修正</p>
+</li>
+<li><p>^安裝 1.x.x</p>
+</li>
+<li><p>~安裝 1.12.x</p>
+</li>
+<li><p>latest 安裝最新的</p>
+</li>
+</ul>
+<hr>
+<h3 id="npm-i-save、–save-dev、-g-差異"><a href="#npm-i-save、–save-dev、-g-差異" class="headerlink" title="npm i -save、–save-dev、-g 差異"></a>npm i -save、–save-dev、-g 差異</h3><ul>
+<li>-save Node 應用程式上線會用到的 npm</li>
+<li>–save-dev Node 開發測試用的 npm</li>
+<li>-g 安裝在電腦的全域環境</li>
+</ul>
+<hr>
+<h3 id="nodemon-套件-執行-NPM-內容流程"><a href="#nodemon-套件-執行-NPM-內容流程" class="headerlink" title="nodemon 套件 - 執行 NPM 內容流程"></a>nodemon 套件 - 執行 NPM 內容流程</h3><p>執行安裝：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install nodemon -g</span><br></pre></td></tr></table></figure>
+
+<p>使用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nodemon app.js</span><br></pre></td></tr></table></figure>
+<p>接著就會自動更新 js 裡面的內容，就不需要重新啟動哩</p>
+<hr>
+<h3 id="安裝-uuid"><a href="#安裝-uuid" class="headerlink" title="安裝 uuid"></a>安裝 uuid</h3><p>執行安裝：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i uuid --save</span><br></pre></td></tr></table></figure>
+
+<p>執行 require 載入：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; <span class="attr">v4</span>: uuidv4 &#125; = <span class="built_in">require</span>(<span class="string">&#x27;uuid&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> a = <span class="title function_">uuidv4</span>()</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a)</span><br><span class="line"><span class="comment">// 97d2d35d-5d17-4608-907e-bc6fde4fdf2c</span></span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/hexo-blog/tags/Node-js/" rel="tag"># Node.js</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/hexo-blog/2023/01/15/Node.js/Node.js%20%E5%AD%B8%E7%BF%92%E6%97%A5%E8%A8%98(1)%20-%20%E6%A0%B8%E5%BF%83%E6%A8%A1%E7%B5%84/" rel="prev" title="Node.js 學習日記(1) - 核心模組">
+      <i class="fa fa-chevron-left"></i> Node.js 學習日記(1) - 核心模組
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/hexo-blog/2023/01/18/Node.js/Node.js%20%E5%AD%B8%E7%BF%92%E6%97%A5%E8%A8%98(3)%20-%20todolist%20%E5%AF%A6%E4%BD%9C(%E4%B8%8A)/" rel="next" title="Node.js 學習日記(3) - todolist 實作(上)">
+      Node.js 學習日記(3) - todolist 實作(上) <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B-package-json"><span class="nav-number">1.</span> <span class="nav-text">建立 package.json</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NPM-%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6%E6%B5%81%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">NPM 安裝套件流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%AC%E7%89%88%E8%99%9F%E8%AA%AA%E6%98%8E"><span class="nav-number">3.</span> <span class="nav-text">本版號說明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#npm-i-save%E3%80%81%E2%80%93save-dev%E3%80%81-g-%E5%B7%AE%E7%95%B0"><span class="nav-number">4.</span> <span class="nav-text">npm i -save、–save-dev、-g 差異</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nodemon-%E5%A5%97%E4%BB%B6-%E5%9F%B7%E8%A1%8C-NPM-%E5%85%A7%E5%AE%B9%E6%B5%81%E7%A8%8B"><span class="nav-number">5.</span> <span class="nav-text">nodemon 套件 - 執行 NPM 內容流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D-uuid"><span class="nav-number">6.</span> <span class="nav-text">安裝 uuid</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">焦糖</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/hexo-blog/archives/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分類</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/hexo-blog/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">焦糖</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/hexo-blog/lib/anime.min.js"></script>
+  <script src="/hexo-blog/lib/velocity/velocity.min.js"></script>
+  <script src="/hexo-blog/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/hexo-blog/js/utils.js"></script>
+
+<script src="/hexo-blog/js/motion.js"></script>
+
+
+<script src="/hexo-blog/js/schemes/pisces.js"></script>
+
+
+<script src="/hexo-blog/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
