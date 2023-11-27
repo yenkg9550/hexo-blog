@@ -27,13 +27,13 @@
 <meta property="og:site_name" content="焦糖&#39;s blog">
 <meta property="og:description" content="Node.js 學習日記(3) - todolist 實作">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://yenkg9550.github.io/hexo-blog/images/Node02.png">
+<meta property="og:image" content="https://yenkg9550.github.io/hexo-blog/imgaes/node_image/node_image03.png">
 <meta property="article:published_time" content="2023-01-18T14:15:07.000Z">
-<meta property="article:modified_time" content="2023-11-23T06:39:58.675Z">
+<meta property="article:modified_time" content="2023-11-27T10:35:29.627Z">
 <meta property="article:author" content="焦糖">
 <meta property="article:tag" content="Node.js">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://yenkg9550.github.io/hexo-blog/images/Node02.png">
+<meta name="twitter:image" content="https://yenkg9550.github.io/hexo-blog/imgaes/node_image/node_image03.png">
 
 <link rel="canonical" href="https://yenkg9550.github.io/hexo-blog/2023/01/18/Node.js/Node.js%20%E5%AD%B8%E7%BF%92%E6%97%A5%E8%A8%98(3)%20-%20todolist%20%E5%AF%A6%E4%BD%9C(%E4%B8%8A)/">
 
@@ -188,7 +188,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2023-11-23 14:39:58" itemprop="dateModified" datetime="2023-11-23T14:39:58+08:00">2023-11-23</time>
+                <time title="修改時間：2023-11-27 18:35:29" itemprop="dateModified" datetime="2023-11-27T18:35:29+08:00">2023-11-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -213,7 +213,7 @@
       
         <p>Node.js 學習日記(3) - todolist 實作</p>
 <span id="more"></span>
-<p><img src="/hexo-blog/images/Node02.png"></p>
+<p><img src="/hexo-blog/imgaes/node_image/node_image03.png"></p>
 <h3 id="起手式"><a href="#起手式" class="headerlink" title="起手式"></a>起手式</h3><ol>
 <li>先建立 package.json 的環境 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init </span><br></pre></td></tr></table></figure></li>
 <li>載入 createServer 模組<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">&#x27;http&#x27;</span>); <span class="comment">// 1. 先載入 http</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">const</span> <span class="title function_">request</span> = (<span class="params">req, res</span>) =&gt; &#123; <span class="comment">// 3. 請求 / 回傳</span></span><br><span class="line">  res.<span class="title function_">writeHead</span>(<span class="number">200</span>, &#123;<span class="string">&quot;Conent-Type&quot;</span>:<span class="string">&quot;text/plain&quot;</span>&#125;); </span><br><span class="line">  res.<span class="title function_">write</span>(<span class="string">&quot;Hello&quot;</span>);</span><br><span class="line">  res.<span class="title function_">end</span>()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> server = http.<span class="title function_">createServer</span>(request); <span class="comment">// 2.使用 createServer 並建立 port 號</span></span><br><span class="line">server.<span class="title function_">listen</span>(<span class="number">3005</span>);</span><br></pre></td></tr></table></figure></li>

@@ -27,13 +27,13 @@
 <meta property="og:site_name" content="焦糖&#39;s blog">
 <meta property="og:description" content="Node.js 學習日記 - NPM">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://yenkg9550.github.io/hexo-blog/images/Node01.png">
+<meta property="og:image" content="https://yenkg9550.github.io/hexo-blog/images/node_image/node_image01.png">
 <meta property="article:published_time" content="2023-01-16T03:03:20.000Z">
-<meta property="article:modified_time" content="2023-11-23T06:39:58.675Z">
+<meta property="article:modified_time" content="2023-11-27T10:34:52.891Z">
 <meta property="article:author" content="焦糖">
 <meta property="article:tag" content="Node.js">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://yenkg9550.github.io/hexo-blog/images/Node01.png">
+<meta name="twitter:image" content="https://yenkg9550.github.io/hexo-blog/images/node_image/node_image01.png">
 
 <link rel="canonical" href="https://yenkg9550.github.io/hexo-blog/2023/01/16/Node.js/Node.js%20%E5%AD%B8%E7%BF%92%E6%97%A5%E8%A8%98(2)%20-%20NPM/">
 
@@ -188,7 +188,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2023-11-23 14:39:58" itemprop="dateModified" datetime="2023-11-23T14:39:58+08:00">2023-11-23</time>
+                <time title="修改時間：2023-11-27 18:34:52" itemprop="dateModified" datetime="2023-11-27T18:34:52+08:00">2023-11-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -230,7 +230,7 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;name&quot;</span>: <span class="string">&quot;node&quot;</span>,</span><br><span class="line">  <span class="string">&quot;version&quot;</span>: <span class="string">&quot;1.0.0&quot;</span>,</span><br><span class="line">  <span class="string">&quot;description&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">  <span class="string">&quot;main&quot;</span>: <span class="string">&quot;app.js&quot;</span>,</span><br><span class="line">  <span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;test&quot;</span>: <span class="string">&quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;author&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">  <span class="string">&quot;license&quot;</span>: <span class="string">&quot;ISC&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <hr>
 <h3 id="NPM-安裝套件流程"><a href="#NPM-安裝套件流程" class="headerlink" title="NPM 安裝套件流程"></a>NPM 安裝套件流程</h3><p>可以先到 NPM <a target="_blank" rel="noopener" href="https://www.npmjs.com/">官方網站</a>，在紅框處可以直接收尋套件名稱</p>
-<p><img src="/hexo-blog/images/Node01.png"></p>
+<p><img src="/hexo-blog/images/node_image/node_image01.png"></p>
 <p>一樣先 npm init 建立 package.json，然後安裝 npm install express</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;name&quot;</span>: <span class="string">&quot;node&quot;</span>,</span><br><span class="line">  <span class="string">&quot;version&quot;</span>: <span class="string">&quot;1.0.0&quot;</span>,</span><br><span class="line">  <span class="string">&quot;description&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">  <span class="string">&quot;main&quot;</span>: <span class="string">&quot;app.js&quot;</span>,</span><br><span class="line">  <span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;test&quot;</span>: <span class="string">&quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;author&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">  <span class="string">&quot;license&quot;</span>: <span class="string">&quot;ISC&quot;</span>,</span><br><span class="line">  <span class="string">&quot;dependencies&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;express&quot;</span>: <span class="string">&quot;^4.18.2&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>完成的話在 package.json 就會看到 express 了</p>
