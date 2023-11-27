@@ -1,8 +1,7 @@
----
 title: Node.js 學習日記(10) - MongoDB Shell - 刪除資料
-date: 2023-03-11 22:50:56
 tags: Node.js
 categories: Node.js
+date: 2023-03-11 22:50:56
 ---
 Node.js 學習日記(10) - 刪除資料：deleteOne、deleteMany
 

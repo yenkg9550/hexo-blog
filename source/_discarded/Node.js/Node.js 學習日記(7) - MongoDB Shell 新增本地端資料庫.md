@@ -1,8 +1,7 @@
----
 title: Node.js 學習日記(7) - MongoDB Shell 新增本地端資料庫
-date: 2023-03-11 17:27:58
 tags: Node.js
 categories: Node.js
+date: 2023-03-11 17:27:58
 ---
 Node.js 學習日記(7) - 新增本地端資料庫
 <!--more-->

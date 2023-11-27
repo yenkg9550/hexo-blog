@@ -1,8 +1,7 @@
----
 title: Node.js 學習日記(9) - MongoDB Shell - 更新資料
-date: 2023-03-11 18:17:59
 tags: Node.js
 categories: Node.js
+date: 2023-03-11 18:17:59
 ---
 Node.js 學習日記(9) - 更新資料：updateOne、updateMany
 
